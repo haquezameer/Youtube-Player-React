@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import _ from 'lodash';
-import YTsearch from 'youtube-api-search';
-import SearchBar from './components/searchbar';
-import VideoList from './components/video_list';
-import VideoDetail from './components/video_detail';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import _ from "lodash";
+import YTsearch from "youtube-api-search";
+import SearchBar from "./components/searchbar";
+import VideoList from "./components/video_list";
+import VideoDetail from "./components/video_detail";
 
-const API_KEY = 'AIzaSyA27wkBL00MkQdFEBw308d7I7C0SnA54I0';
+const API_KEY = "AIzaSyA27wkBL00MkQdFEBw308d7I7C0SnA54I0";
 
 class App extends Component {
   constructor(props) {
@@ -14,23 +14,25 @@ class App extends Component {
 
     this.state = {
       videos: [],
-      selectedVideo: null,
+      selectedVideo: null
     };
 
-    this.videoSearch('surfboards');
+    this.videoSearch("surfboards");
   }
 
   videoSearch(term) {
-    YTsearch({ key: API_KEY, term }, (videos) => {
+    YTsearch({ key: API_KEY, term }, videos => {
       this.setState({
         videos,
-        selectedVideo: videos[0],
+        selectedVideo: videos[0]
       });
     });
   }
 
   render() {
-    const videoSearch = _.debounce((term) => { this.videoSearch(term); }, 300);
+    const videoSearch = _.debounce(term => {
+      this.videoSearch(term);
+    }, 300);
     return (
       <div>
         <SearchBar onVideoSearch={videoSearch} />
@@ -45,5 +47,5 @@ class App extends Component {
 }
 
 /* eslint-disable */
-ReactDOM.render(<App />, document.querySelector('.container'));
+ReactDOM.render(<App />, document.querySelector(".container"));
 /* eslint-enable */

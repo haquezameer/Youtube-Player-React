@@ -1,7 +1,7 @@
 {
-    "extends": ["plugin:prettier/recommended", "airbnb"],
-    "rules": {
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-        "react/prop-types": 0
-      }
+  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prop-types": 0
+  }
 }
